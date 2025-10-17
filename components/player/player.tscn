@@ -1,0 +1,175 @@
+[gd_scene load_steps=22 format=3 uid="uid://buyxmhmvc54s8"]
+
+[ext_resource type="Texture2D" uid="uid://bvlg0hf1pgu1n" path="res://components/player/sprite.png" id="1_t3162"]
+
+[sub_resource type="Animation" id="Animation_t3162"]
+resource_name = "up"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(0.297302, 2.46229),
+"update": 0,
+"values": [1.5708, 1.0472]
+}
+
+[sub_resource type="Animation" id="Animation_kfe3d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5708]
+}
+
+[sub_resource type="Animation" id="Animation_ph1f6"]
+resource_name = "up_n"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(0.297302, 2.46229),
+"update": 0,
+"values": [1.0472, 1.5708]
+}
+
+[sub_resource type="Animation" id="Animation_wa6cj"]
+resource_name = "down"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(0.297302, 2.46229),
+"update": 0,
+"values": [1.5708, 2.0944]
+}
+
+[sub_resource type="Animation" id="Animation_mpawu"]
+resource_name = "down_n"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(0.297302, 2.46229),
+"update": 0,
+"values": [2.0944, 1.5708]
+}
+
+[sub_resource type="Animation" id="Animation_pvtfm"]
+resource_name = "forward"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(0.297302, 2.46229),
+"update": 0,
+"values": [1.5708, 1.5708]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pvtfm"]
+_data = {
+&"RESET": SubResource("Animation_kfe3d"),
+&"down": SubResource("Animation_wa6cj"),
+&"down_n": SubResource("Animation_mpawu"),
+&"forward": SubResource("Animation_pvtfm"),
+&"up": SubResource("Animation_t3162"),
+&"up_n": SubResource("Animation_ph1f6")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kfe3d"]
+animation = &"down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mpawu"]
+animation = &"down_n"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t3162"]
+animation = &"forward"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ph1f6"]
+animation = &"up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wa6cj"]
+animation = &"up_n"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kfe3d"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mpawu"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pvtfm"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_02tnr"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bv0o5"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pxnim"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fwwnh"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ph1f6"]
+states/down/node = SubResource("AnimationNodeAnimation_kfe3d")
+states/down/position = Vector2(579.852, 232.848)
+states/down_n/node = SubResource("AnimationNodeAnimation_mpawu")
+states/down_n/position = Vector2(726.667, 233.293)
+states/forward/node = SubResource("AnimationNodeAnimation_t3162")
+states/forward/position = Vector2(580, 100.123)
+states/up/node = SubResource("AnimationNodeAnimation_ph1f6")
+states/up/position = Vector2(579.556, -31.1516)
+states/up_n/node = SubResource("AnimationNodeAnimation_wa6cj")
+states/up_n/position = Vector2(726.667, -30.7072)
+transitions = ["Start", "forward", SubResource("AnimationNodeStateMachineTransition_kfe3d"), "forward", "up", SubResource("AnimationNodeStateMachineTransition_mpawu"), "up", "up_n", SubResource("AnimationNodeStateMachineTransition_pvtfm"), "up_n", "forward", SubResource("AnimationNodeStateMachineTransition_02tnr"), "forward", "down", SubResource("AnimationNodeStateMachineTransition_bv0o5"), "down", "down_n", SubResource("AnimationNodeStateMachineTransition_pxnim"), "down_n", "forward", SubResource("AnimationNodeStateMachineTransition_fwwnh")]
+graph_offset = Vector2(0, -117.152)
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.322656, 0.282031)
+texture = ExtResource("1_t3162")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_pvtfm")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_ph1f6")
+anim_player = NodePath("../AnimationPlayer")
