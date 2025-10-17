@@ -1,5 +1,6 @@
-[gd_scene load_steps=22 format=3 uid="uid://buyxmhmvc54s8"]
+[gd_scene load_steps=16 format=3 uid="uid://buyxmhmvc54s8"]
 
+[ext_resource type="Script" uid="uid://onejl0gnfp82" path="res://components/player/player.gd" id="1_kfe3d"]
 [ext_resource type="Texture2D" uid="uid://bvlg0hf1pgu1n" path="res://components/player/sprite.png" id="1_t3162"]
 
 [sub_resource type="Animation" id="Animation_kfe3d"]
@@ -19,7 +20,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_wa6cj"]
 resource_name = "down"
-length = 0.7
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -27,7 +28,7 @@ tracks/0/path = NodePath("Sprite2D:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.7),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(0.297302, 2.46229),
 "update": 0,
 "values": [1.5708, 2.0944]
@@ -35,7 +36,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_mpawu"]
 resource_name = "down_n"
-length = 0.7
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -43,7 +44,7 @@ tracks/0/path = NodePath("Sprite2D:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.7),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(0.297302, 2.46229),
 "update": 0,
 "values": [2.0944, 1.5708]
@@ -67,7 +68,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_t3162"]
 resource_name = "up"
-length = 0.7
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -75,7 +76,7 @@ tracks/0/path = NodePath("Sprite2D:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.7),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(0.297302, 2.46229),
 "update": 0,
 "values": [1.5708, 1.0472]
@@ -83,7 +84,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_ph1f6"]
 resource_name = "up_n"
-length = 0.7
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -91,7 +92,7 @@ tracks/0/path = NodePath("Sprite2D:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.7),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(0.297302, 2.46229),
 "update": 0,
 "values": [1.0472, 1.5708]
@@ -107,58 +108,37 @@ _data = {
 &"up_n": SubResource("Animation_ph1f6")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kfe3d"]
-animation = &"down"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mpawu"]
-animation = &"down_n"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t3162"]
-animation = &"forward"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ph1f6"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pvtfm"]
 animation = &"up"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wa6cj"]
-animation = &"up_n"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_02tnr"]
+animation = &"down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bv0o5"]
+animation = &"forward"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_pxnim"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_pvtfm")
+blend_point_0/pos = -0.95
+blend_point_1/node = SubResource("AnimationNodeAnimation_02tnr")
+blend_point_1/pos = 0.95
+blend_point_2/node = SubResource("AnimationNodeAnimation_bv0o5")
+blend_point_2/pos = 0.0
+snap = 0.05
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kfe3d"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mpawu"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pvtfm"]
-switch_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_02tnr"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bv0o5"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pxnim"]
-switch_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fwwnh"]
 switch_mode = 2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ph1f6"]
-states/down/node = SubResource("AnimationNodeAnimation_kfe3d")
-states/down/position = Vector2(579.852, 232.848)
-states/down_n/node = SubResource("AnimationNodeAnimation_mpawu")
-states/down_n/position = Vector2(726.667, 233.293)
-states/forward/node = SubResource("AnimationNodeAnimation_t3162")
-states/forward/position = Vector2(580, 100.123)
-states/up/node = SubResource("AnimationNodeAnimation_ph1f6")
-states/up/position = Vector2(579.556, -31.1516)
-states/up_n/node = SubResource("AnimationNodeAnimation_wa6cj")
-states/up_n/position = Vector2(726.667, -30.7072)
-transitions = ["Start", "forward", SubResource("AnimationNodeStateMachineTransition_kfe3d"), "forward", "up", SubResource("AnimationNodeStateMachineTransition_mpawu"), "up", "up_n", SubResource("AnimationNodeStateMachineTransition_pvtfm"), "up_n", "forward", SubResource("AnimationNodeStateMachineTransition_02tnr"), "forward", "down", SubResource("AnimationNodeStateMachineTransition_bv0o5"), "down", "down_n", SubResource("AnimationNodeStateMachineTransition_pxnim"), "down_n", "forward", SubResource("AnimationNodeStateMachineTransition_fwwnh")]
-graph_offset = Vector2(0, -117.152)
+states/Move/node = SubResource("AnimationNodeBlendSpace1D_pxnim")
+states/Move/position = Vector2(446.667, 99.2949)
+transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_kfe3d")]
+graph_offset = Vector2(0, -46.6176)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
+script = ExtResource("1_kfe3d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
@@ -173,3 +153,6 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_ph1f6")
 anim_player = NodePath("../AnimationPlayer")
+parameters/Move/blend_position = -0.00215054
+
+[node name="Camera2D" type="Camera2D" parent="."]
