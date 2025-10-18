@@ -8,23 +8,24 @@ class_name ProjectileLauncher
 @export var projectile: PackedScene
 @export var force: float
 @export var offset: Vector2
-@export var interval: float = 1.0
+@export var interval: float = 0.5
 
 var last_shot: float = 0
 
 func _process(delta: float) -> void:
 	last_shot += delta
 	if last_shot > interval:
-		last_shot = 0
 		if is_player:
-			launch(Vector2.RIGHT)
+			if not (Input.is_action_pressed("up") or Input.is_action_pressed("down")):
+				launch(Vector2.RIGHT)
+				last_shot = 0
 		else:
 			launch(-character.global_position + player.global_position)
-		
+			last_shot = 0
 
 func launch(target: Vector2):
 	var new_projectile: Projecile = projectile.instantiate()
 	new_projectile.global_position = character.global_position + offset
 	new_projectile.rotate(atan2(target.y, target.x))
 	character.add_sibling(new_projectile)
-	new_projectile.apply_force(target.normalized()*force)
+	new_projectile.apply_force(target.normalized()*force*1000)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://buyxmhmvc54s8"]
+[gd_scene load_steps=18 format=3 uid="uid://buyxmhmvc54s8"]
 
 [ext_resource type="Script" uid="uid://onejl0gnfp82" path="res://components/player/player.gd" id="1_kfe3d"]
 [ext_resource type="Texture2D" uid="uid://mnlk88j12agc" path="res://components/player/sprite.png" id="1_t3162"]
 [ext_resource type="PackedScene" uid="uid://dgamo7bet13wv" path="res://components/projectile_launcher/projectile_launcher.tscn" id="3_ph1f6"]
+[ext_resource type="PackedScene" uid="uid://co8tdeoa5i11i" path="res://components/shot/shot1.tscn" id="4_wa6cj"]
 
 [sub_resource type="Animation" id="Animation_kfe3d"]
 length = 0.001
@@ -138,8 +139,14 @@ transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(0, -46.6176)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+z_index = 1
 collision_layer = 2
 script = ExtResource("1_kfe3d")
+
+[node name="Projectile Launcher" parent="." instance=ExtResource("3_ph1f6")]
+projectile = ExtResource("4_wa6cj")
+force = 100.0
+offset = Vector2(30, 0)
 
 [node name="sprite" type="Sprite2D" parent="."]
 rotation = 1.5708
@@ -159,5 +166,3 @@ parameters/Move/blend_position = -0.00215054
 [node name="collider" type="CollisionPolygon2D" parent="."]
 visible = false
 polygon = PackedVector2Array(-28, 0, -72, 60, 134, 0, -72, -60)
-
-[node name="Projectile Launcher" parent="." instance=ExtResource("3_ph1f6")]
