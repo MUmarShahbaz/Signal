@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cdiso1u0bxxtg"]
+[gd_scene load_steps=9 format=3 uid="uid://cdiso1u0bxxtg"]
 
 [ext_resource type="Texture2D" uid="uid://h3bh05sre1u8" path="res://components/virus/sprite1.png" id="1_4atth"]
+[ext_resource type="Material" uid="uid://b7hsxg70gkk5q" path="res://components/shader/halo.tres" id="1_hgm0u"]
 [ext_resource type="Script" uid="uid://c8tdh4ykaj38q" path="res://components/virus/virus.gd" id="1_humf0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hgm0u"]
@@ -47,15 +48,16 @@ _data = {
 radius = 35.0571
 
 [node name="Virus" type="CharacterBody2D"]
+z_index = 1
 collision_layer = 4
 script = ExtResource("1_humf0")
-max_angle = 0.09
 
 [node name="dum" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_hgm0u")
 disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("1_hgm0u")
 texture = ExtResource("1_4atth")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

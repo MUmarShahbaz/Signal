@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b7hsxg70gkk5q"]
+
+[sub_resource type="Shader" id="Shader_wa6cj"]
+code = "shader_type canvas_item;
+
+uniform vec4 white_threshold = vec4(0.9, 0.9, 0.9, 0.9);
+uniform float multiplier = 2.0;
+
+void fragment() {
+	vec4 my_tex = texture(TEXTURE, UV);
+	if (!(my_tex.r > white_threshold.r && my_tex.g > white_threshold.g && my_tex.b > white_threshold.b && my_tex.a > white_threshold.a)) {
+		COLOR = my_tex * multiplier;
+	}
+}"
+
+[resource]
+shader = SubResource("Shader_wa6cj")
+shader_parameter/white_threshold = Vector4(0.9, 0.9, 0.9, 0.9)
+shader_parameter/multiplier = 1.5

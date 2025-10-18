@@ -14,6 +14,11 @@ config/name="Signal"
 run/main_scene="uid://c7vr34q41akig"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
@@ -41,3 +46,5 @@ down={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+viewport/hdr_2d=true
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

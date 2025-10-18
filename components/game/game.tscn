@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7vr34q41akig"]
+[gd_scene load_steps=6 format=3 uid="uid://c7vr34q41akig"]
 
 [ext_resource type="PackedScene" uid="uid://c6p04jixa6vpf" path="res://components/spawner/spawner.tscn" id="1_8im3q"]
 [ext_resource type="PackedScene" uid="uid://cdiso1u0bxxtg" path="res://components/virus/virus.tscn" id="2_hp45u"]
@@ -7,19 +7,28 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8im3q"]
 size = Vector2(156, 1271.5)
 
+[sub_resource type="Environment" id="Environment_k2e6f"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 1.14
+glow_hdr_scale = 0.0
+
 [node name="Game" type="Node2D"]
 
-[node name="Spwaner" parent="." node_paths=PackedStringArray("region") instance=ExtResource("1_8im3q")]
+[node name="Virus Spawner" parent="." node_paths=PackedStringArray("region") instance=ExtResource("1_8im3q")]
 position = Vector2(1780, 0)
 item = ExtResource("2_hp45u")
-region = NodePath("CollisionShape2D")
-interval = 0.1
+region = NodePath("Spawn Area")
+interval = 0.3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spwaner"]
+[node name="Spawn Area" type="CollisionShape2D" parent="Virus Spawner"]
 shape = SubResource("RectangleShape2D_8im3q")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera" type="Camera2D" parent="."]
 offset = Vector2(700, 0)
 zoom = Vector2(0.6, 0.6)
 
 [node name="Player" parent="." instance=ExtResource("2_k2e6f")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_k2e6f")
