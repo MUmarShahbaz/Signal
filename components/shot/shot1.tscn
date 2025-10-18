@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://co8tdeoa5i11i"]
+
+[ext_resource type="Script" uid="uid://cj446bk688tlo" path="res://components/shot/shot.gd" id="1_f2hnp"]
+[ext_resource type="Texture2D" uid="uid://d04aqg2nl8q8t" path="res://components/shot/sprite1.png" id="2_cxajf"]
+
+[node name="RigidBody2D" type="RigidBody2D"]
+script = ExtResource("1_f2hnp")
+metadata/_custom_type_script = "uid://cj446bk688tlo"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_cxajf")
