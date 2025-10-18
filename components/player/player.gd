@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var anim_tree: AnimationTree = $animation_tree
 @export var anim_speed:= 8.0
-@export var move_speed:= 2000
+@export var move_speed:= 600
 
 var pointing_at := 0.0
 

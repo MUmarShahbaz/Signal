@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://buyxmhmvc54s8"]
+[gd_scene load_steps=17 format=3 uid="uid://buyxmhmvc54s8"]
 
 [ext_resource type="Script" uid="uid://onejl0gnfp82" path="res://components/player/player.gd" id="1_kfe3d"]
-[ext_resource type="Texture2D" uid="uid://bvlg0hf1pgu1n" path="res://components/player/sprite.png" id="1_t3162"]
+[ext_resource type="Texture2D" uid="uid://mnlk88j12agc" path="res://components/player/sprite.png" id="1_t3162"]
+[ext_resource type="PackedScene" uid="uid://dgamo7bet13wv" path="res://components/projectile_launcher/projectile_launcher.tscn" id="3_ph1f6"]
 
 [sub_resource type="Animation" id="Animation_kfe3d"]
 length = 0.001
@@ -136,15 +137,14 @@ states/Move/position = Vector2(446.667, 99.2949)
 transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_kfe3d")]
 graph_offset = Vector2(0, -46.6176)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_kfe3d")
 
 [node name="sprite" type="Sprite2D" parent="."]
 rotation = 1.5708
-scale = Vector2(0.322656, 0.282031)
 texture = ExtResource("1_t3162")
-offset = Vector2(0, -135)
+offset = Vector2(0, -14)
 
 [node name="animations" type="AnimationPlayer" parent="."]
 libraries = {
@@ -156,12 +156,8 @@ tree_root = SubResource("AnimationNodeStateMachine_ph1f6")
 anim_player = NodePath("../animations")
 parameters/Move/blend_position = -0.00215054
 
-[node name="cam" type="Camera2D" parent="."]
-position = Vector2(1500, 0)
-zoom = Vector2(0.3, 0.3)
-limit_top = -1300
-limit_bottom = 1300
-position_smoothing_enabled = true
-
 [node name="collider" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-34, 0, -86, 82, 165, 0, -86, -82)
+visible = false
+polygon = PackedVector2Array(-28, 0, -72, 60, 134, 0, -72, -60)
+
+[node name="Projectile Launcher" parent="." instance=ExtResource("3_ph1f6")]

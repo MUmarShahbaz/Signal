@@ -4,5 +4,8 @@
 
 [node name="Game" type="Node2D"]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(700, 0)
+zoom = Vector2(0.6, 0.6)
+
 [node name="Player" parent="." instance=ExtResource("2_k2e6f")]
-position = Vector2(179, 77)
