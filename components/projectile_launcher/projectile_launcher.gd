@@ -1,0 +1,30 @@
+extends Node
+class_name ProjectileLauncher
+
+@onready var character : CharacterBody2D = get_parent()
+@onready var player : CharacterBody2D = get_tree().get_first_node_in_group("player")
+@onready var is_player : bool = (character == player)
+
+@export var projectile: PackedScene
+@export var force: float
+@export var offset: Vector2
+@export var interval: float = 1.0
+
+var last_shot: float = 0
+
+func _process(delta: float) -> void:
+	last_shot += delta
+	if last_shot > interval:
+		last_shot = 0
+		if is_player:
+			launch(Vector2.RIGHT)
+		else:
+			launch(-character.global_position + player.global_position)
+		
+
+func launch(target: Vector2):
+	var new_projectile: Projecile = projectile.instantiate()
+	new_projectile.global_position = character.global_position + offset
+	new_projectile.rotate(atan2(target.y, target.x))
+	character.add_sibling(new_projectile)
+	new_projectile.apply_force(target.normalized()*force)

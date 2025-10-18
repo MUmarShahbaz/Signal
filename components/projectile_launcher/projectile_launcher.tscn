@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgamo7bet13wv"]
+
+[ext_resource type="Script" uid="uid://b3bb7oervp0w" path="res://components/projectile_launcher/projectile_launcher.gd" id="1_0eb01"]
+
+[node name="Projectile Launcher" type="Node"]
+script = ExtResource("1_0eb01")
