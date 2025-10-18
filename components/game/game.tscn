@@ -1,8 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://c7vr34q41akig"]
+[gd_scene load_steps=5 format=3 uid="uid://c7vr34q41akig"]
 
+[ext_resource type="PackedScene" uid="uid://c6p04jixa6vpf" path="res://components/spawner/spawner.tscn" id="1_8im3q"]
+[ext_resource type="PackedScene" uid="uid://cdiso1u0bxxtg" path="res://components/virus/virus.tscn" id="2_hp45u"]
 [ext_resource type="PackedScene" uid="uid://buyxmhmvc54s8" path="res://components/player/player.tscn" id="2_k2e6f"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8im3q"]
+size = Vector2(156, 1271.5)
+
 [node name="Game" type="Node2D"]
+
+[node name="Spwaner" parent="." node_paths=PackedStringArray("region") instance=ExtResource("1_8im3q")]
+position = Vector2(1780, 0)
+item = ExtResource("2_hp45u")
+region = NodePath("CollisionShape2D")
+interval = 0.1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spwaner"]
+shape = SubResource("RectangleShape2D_8im3q")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(700, 0)

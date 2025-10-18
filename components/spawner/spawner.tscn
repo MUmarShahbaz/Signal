@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6p04jixa6vpf"]
+
+[ext_resource type="Script" uid="uid://bfrmehscyjles" path="res://components/spawner/spawner.gd" id="1_tlf6n"]
+
+[node name="Spawner" type="Area2D"]
+script = ExtResource("1_tlf6n")

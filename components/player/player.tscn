@@ -164,5 +164,4 @@ anim_player = NodePath("../animations")
 parameters/Move/blend_position = -0.00215054
 
 [node name="collider" type="CollisionPolygon2D" parent="."]
-visible = false
-polygon = PackedVector2Array(-28, 0, -72, 60, 134, 0, -72, -60)
+polygon = PackedVector2Array(-12, 0, -32, 26, 59, 0, -32, -26)

@@ -27,5 +27,7 @@ func launch(target: Vector2):
 	var new_projectile: Projecile = projectile.instantiate()
 	new_projectile.global_position = character.global_position + offset
 	new_projectile.rotate(atan2(target.y, target.x))
+	if is_player:
+		new_projectile.collision_mask = 4
 	character.add_sibling(new_projectile)
 	new_projectile.apply_force(target.normalized()*force*1000)

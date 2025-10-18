@@ -9,7 +9,7 @@ height = 106.0
 
 [node name="Shot1" type="RigidBody2D"]
 collision_layer = 8
-collision_mask = 4
+collision_mask = 2
 gravity_scale = 0.0
 script = ExtResource("1_f2hnp")
 metadata/_custom_type_script = "uid://cj446bk688tlo"
