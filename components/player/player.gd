@@ -5,8 +5,6 @@ class_name Player
 @export var anim_speed:= 8.0
 @export var move_speed:= 600
 
-@export var Hearts: int = 3
-
 var pointing_at := 0.0
 
 func _physics_process(delta: float) -> void:

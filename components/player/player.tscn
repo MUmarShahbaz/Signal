@@ -1,25 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://buyxmhmvc54s8"]
+[gd_scene load_steps=22 format=3 uid="uid://buyxmhmvc54s8"]
 
 [ext_resource type="Script" uid="uid://onejl0gnfp82" path="res://components/player/player.gd" id="1_kfe3d"]
 [ext_resource type="Texture2D" uid="uid://mnlk88j12agc" path="res://components/player/sprite.png" id="1_t3162"]
 [ext_resource type="PackedScene" uid="uid://dgamo7bet13wv" path="res://components/projectile_launcher/projectile_launcher.tscn" id="3_ph1f6"]
 [ext_resource type="Material" uid="uid://b7hsxg70gkk5q" path="res://components/shader/halo.tres" id="4_mpawu"]
 [ext_resource type="PackedScene" uid="uid://b6xjkvh5y3c8j" path="res://components/shot/shot.tscn" id="4_wa6cj"]
-
-[sub_resource type="Animation" id="Animation_kfe3d"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.5708]
-}
 
 [sub_resource type="Animation" id="Animation_wa6cj"]
 resource_name = "down"
@@ -35,6 +20,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(0.297302, 2.46229),
 "update": 0,
 "values": [1.5708, 2.0944]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_mpawu"]
@@ -52,6 +49,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [2.0944, 1.5708]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_pvtfm"]
 resource_name = "forward"
@@ -67,6 +76,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(0.297302, 2.46229),
 "update": 0,
 "values": [1.5708, 1.5708]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_t3162"]
@@ -84,6 +105,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [1.5708, 1.0472]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_ph1f6"]
 resource_name = "up_n"
@@ -100,10 +133,66 @@ tracks/0/keys = {
 "update": 0,
 "values": [1.0472, 1.5708]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_02tnr"]
+resource_name = "Spawn"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.01, 0.01), Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kfe3d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.01, 0.01)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5708]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pvtfm"]
 _data = {
 &"RESET": SubResource("Animation_kfe3d"),
+&"Spawn": SubResource("Animation_02tnr"),
 &"down": SubResource("Animation_wa6cj"),
 &"down_n": SubResource("Animation_mpawu"),
 &"forward": SubResource("Animation_pvtfm"),
@@ -129,14 +218,22 @@ blend_point_2/node = SubResource("AnimationNodeAnimation_bv0o5")
 blend_point_2/pos = 0.0
 snap = 0.05
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kfe3d"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mpawu"]
+animation = &"Spawn"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pvtfm"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_02tnr"]
 switch_mode = 2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ph1f6"]
 states/Move/node = SubResource("AnimationNodeBlendSpace1D_pxnim")
 states/Move/position = Vector2(446.667, 99.2949)
-transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_kfe3d")]
+states/Spawn/node = SubResource("AnimationNodeAnimation_mpawu")
+states/Spawn/position = Vector2(326.667, 99.4173)
+transitions = ["Start", "Spawn", SubResource("AnimationNodeStateMachineTransition_pvtfm"), "Spawn", "Move", SubResource("AnimationNodeStateMachineTransition_02tnr")]
 graph_offset = Vector2(0, -46.6176)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
@@ -155,6 +252,7 @@ interval = null
 [node name="Sprite" type="Sprite2D" parent="."]
 material = ExtResource("4_mpawu")
 rotation = 1.5708
+scale = Vector2(0.01, 0.01)
 texture = ExtResource("1_t3162")
 offset = Vector2(0, -14)
 
@@ -169,4 +267,5 @@ anim_player = NodePath("../Animation Player")
 parameters/Move/blend_position = -0.00215054
 
 [node name="Collider" type="CollisionPolygon2D" parent="."]
+visible = false
 polygon = PackedVector2Array(-12, 0, -32, 26, 59, 0, -32, -26)

@@ -13,7 +13,7 @@ func _ready() -> void:
 	sprite.texture = sp1 if randi_range(0, 1) == 0 else sp2
 	y = randf_range(-max_angle, max_angle)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	velocity = Vector2(-1, y).normalized() * 400
 	move_and_slide()
 

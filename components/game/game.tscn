@@ -1,8 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://c7vr34q41akig"]
+[gd_scene load_steps=10 format=3 uid="uid://c7vr34q41akig"]
 
 [ext_resource type="PackedScene" uid="uid://c6p04jixa6vpf" path="res://components/spawner/spawner.tscn" id="1_8im3q"]
-[ext_resource type="PackedScene" uid="uid://buyxmhmvc54s8" path="res://components/player/player.tscn" id="2_k2e6f"]
+[ext_resource type="PackedScene" uid="uid://v62edcjcgouy" path="res://components/ui/hud.tscn" id="3_k2e6f"]
+[ext_resource type="PackedScene" uid="uid://dkjh28mf0ao1b" path="res://components/ui/intro.tscn" id="4_hp45u"]
 [ext_resource type="Script" uid="uid://c6241pfc8o3sq" path="res://components/game/cleaner.gd" id="5_k45nv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hp45u"]
+size = Vector2(2876, 215)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k45nv"]
+size = Vector2(246.5, 1822)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8im3q"]
 size = Vector2(156, 1271.5)
@@ -16,13 +23,27 @@ glow_enabled = true
 glow_intensity = 1.14
 glow_hdr_scale = 0.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hp45u"]
-size = Vector2(2876, 215)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k45nv"]
-size = Vector2(246.5, 1822)
-
 [node name="Game" type="Node2D"]
+
+[node name="Cleaner and Player Spawner" type="Area2D" parent="."]
+collision_mask = 14
+script = ExtResource("5_k45nv")
+
+[node name="up" type="CollisionShape2D" parent="Cleaner and Player Spawner"]
+position = Vector2(605, -843.5)
+shape = SubResource("RectangleShape2D_hp45u")
+
+[node name="down" type="CollisionShape2D" parent="Cleaner and Player Spawner"]
+position = Vector2(605, 819)
+shape = SubResource("RectangleShape2D_hp45u")
+
+[node name="left" type="CollisionShape2D" parent="Cleaner and Player Spawner"]
+position = Vector2(-919.75, -20)
+shape = SubResource("RectangleShape2D_k45nv")
+
+[node name="right" type="CollisionShape2D" parent="Cleaner and Player Spawner"]
+position = Vector2(2140, -20)
+shape = SubResource("RectangleShape2D_k45nv")
 
 [node name="Virus Spawner" parent="." node_paths=PackedStringArray("region") instance=ExtResource("1_8im3q")]
 position = Vector2(1780, 0)
@@ -46,29 +67,17 @@ shape = SubResource("RectangleShape2D_k2e6f")
 offset = Vector2(700, 0)
 zoom = Vector2(0.6, 0.6)
 
-[node name="Player" parent="." instance=ExtResource("2_k2e6f")]
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_k2e6f")
 
-[node name="CleanUpZone" type="Area2D" parent="."]
-collision_mask = 12
-script = ExtResource("5_k45nv")
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="up" type="CollisionShape2D" parent="CleanUpZone"]
-position = Vector2(605, -843.5)
-shape = SubResource("RectangleShape2D_hp45u")
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("3_k2e6f")]
 
-[node name="down" type="CollisionShape2D" parent="CleanUpZone"]
-position = Vector2(605, 819)
-shape = SubResource("RectangleShape2D_hp45u")
+[node name="Intro" parent="CanvasLayer" instance=ExtResource("4_hp45u")]
 
-[node name="left" type="CollisionShape2D" parent="CleanUpZone"]
-position = Vector2(-919.75, -20)
-shape = SubResource("RectangleShape2D_k45nv")
-
-[node name="right" type="CollisionShape2D" parent="CleanUpZone"]
-position = Vector2(2140, -20)
-shape = SubResource("RectangleShape2D_k45nv")
-
-[connection signal="body_entered" from="CleanUpZone" to="CleanUpZone" method="_on_body_entered"]
+[connection signal="body_entered" from="Cleaner and Player Spawner" to="Cleaner and Player Spawner" method="_on_body_entered"]
+[connection signal="start" from="CanvasLayer/Intro" to="Cleaner and Player Spawner" method="start"]
+[connection signal="start" from="CanvasLayer/Intro" to="Virus Spawner" method="enable"]
+[connection signal="start" from="CanvasLayer/Intro" to="Hacker Spawner" method="enable"]
+[connection signal="start" from="CanvasLayer/Intro" to="CanvasLayer/HUD" method="start"]
