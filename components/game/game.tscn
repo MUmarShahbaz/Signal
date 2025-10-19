@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://c7vr34q41akig"]
+[gd_scene load_steps=11 format=3 uid="uid://c7vr34q41akig"]
 
 [ext_resource type="PackedScene" uid="uid://c6p04jixa6vpf" path="res://components/spawner/spawner.tscn" id="1_8im3q"]
 [ext_resource type="PackedScene" uid="uid://v62edcjcgouy" path="res://components/ui/hud.tscn" id="3_k2e6f"]
 [ext_resource type="PackedScene" uid="uid://dkjh28mf0ao1b" path="res://components/ui/intro.tscn" id="4_hp45u"]
 [ext_resource type="Script" uid="uid://c6241pfc8o3sq" path="res://components/game/cleaner.gd" id="5_k45nv"]
+[ext_resource type="PackedScene" uid="uid://ucwt283gkb5" path="res://components/ui/game_over.tscn" id="5_ox8pd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hp45u"]
 size = Vector2(2876, 215)
@@ -25,9 +26,10 @@ glow_hdr_scale = 0.0
 
 [node name="Game" type="Node2D"]
 
-[node name="Cleaner and Player Spawner" type="Area2D" parent="."]
+[node name="Cleaner and Player Spawner" type="Area2D" parent="." node_paths=PackedStringArray("HUD")]
 collision_mask = 14
 script = ExtResource("5_k45nv")
+HUD = NodePath("../CanvasLayer/HUD")
 
 [node name="up" type="CollisionShape2D" parent="Cleaner and Player Spawner"]
 position = Vector2(605, -843.5)
@@ -75,6 +77,9 @@ environment = SubResource("Environment_k2e6f")
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("3_k2e6f")]
 
 [node name="Intro" parent="CanvasLayer" instance=ExtResource("4_hp45u")]
+
+[node name="Game Over" parent="CanvasLayer" node_paths=PackedStringArray("HUD") instance=ExtResource("5_ox8pd")]
+HUD = NodePath("../HUD")
 
 [connection signal="body_entered" from="Cleaner and Player Spawner" to="Cleaner and Player Spawner" method="_on_body_entered"]
 [connection signal="start" from="CanvasLayer/Intro" to="Cleaner and Player Spawner" method="start"]

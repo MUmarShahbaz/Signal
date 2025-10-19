@@ -10,6 +10,7 @@ class_name ProjectileLauncher
 @export var offset: Vector2
 @export var z_index: int = 0
 @export var interval: float = 0.5
+@export var HUD: Control
 
 var last_shot: float = 0
 
@@ -32,5 +33,8 @@ func launch(target: Vector2):
 	if is_player:
 		new_projectile.collision_mask = 4
 	character.add_sibling(new_projectile)
+	if character is Player:
+		new_projectile.killed_virus.connect(Callable(HUD, "killed_virus"))
+		new_projectile.killed_hacker.connect(Callable(HUD, "killed_hacker"))
 	new_projectile.set_shooter(character)
 	new_projectile.apply_force(target.normalized()*force*1000)

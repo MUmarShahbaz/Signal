@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Signal"
-run/main_scene="uid://c7vr34q41akig"
+run/main_scene="uid://d1vsxeriuw0di"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 
 [display]
