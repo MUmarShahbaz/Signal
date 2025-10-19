@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c7vr34q41akig"]
+[gd_scene load_steps=7 format=3 uid="uid://c7vr34q41akig"]
 
 [ext_resource type="PackedScene" uid="uid://c6p04jixa6vpf" path="res://components/spawner/spawner.tscn" id="1_8im3q"]
 [ext_resource type="PackedScene" uid="uid://cdiso1u0bxxtg" path="res://components/virus/virus.tscn" id="2_hp45u"]
 [ext_resource type="PackedScene" uid="uid://buyxmhmvc54s8" path="res://components/player/player.tscn" id="2_k2e6f"]
+[ext_resource type="PackedScene" uid="uid://2nvbg06tu8od" path="res://components/hacker/hacker.tscn" id="4_hp45u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8im3q"]
 size = Vector2(156, 1271.5)
@@ -32,3 +33,9 @@ zoom = Vector2(0.6, 0.6)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_k2e6f")
+
+[node name="Hacker" parent="." instance=ExtResource("4_hp45u")]
+position = Vector2(1491, -457)
+
+[node name="Hacker2" parent="." instance=ExtResource("4_hp45u")]
+position = Vector2(1491, 439)

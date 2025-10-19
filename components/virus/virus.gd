@@ -3,7 +3,7 @@ class_name Virus
 
 @export_range(0, 1) var max_angle: float = 0.3
 
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite: Sprite2D = $Sprite
 var sp1 : CompressedTexture2D = preload("res://components/virus/sprite1.png")
 var sp2 : CompressedTexture2D = preload("res://components/virus/sprite2.png")
 
@@ -17,7 +17,7 @@ func _process(delta: float) -> void:
 	velocity = Vector2(-1, y).normalized() * 400
 	move_and_slide()
 
-
 func _on_body_entered(body: Node2D) -> void:
-	body.queue_free()
-	queue_free()
+	if body is Player:
+		body.queue_free()
+		queue_free()

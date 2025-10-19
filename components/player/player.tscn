@@ -4,14 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://mnlk88j12agc" path="res://components/player/sprite.png" id="1_t3162"]
 [ext_resource type="PackedScene" uid="uid://dgamo7bet13wv" path="res://components/projectile_launcher/projectile_launcher.tscn" id="3_ph1f6"]
 [ext_resource type="Material" uid="uid://b7hsxg70gkk5q" path="res://components/shader/halo.tres" id="4_mpawu"]
-[ext_resource type="PackedScene" uid="uid://co8tdeoa5i11i" path="res://components/shot/shot1.tscn" id="4_wa6cj"]
+[ext_resource type="PackedScene" uid="uid://b6xjkvh5y3c8j" path="res://components/shot/shot.tscn" id="4_wa6cj"]
 
 [sub_resource type="Animation" id="Animation_kfe3d"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:rotation")
+tracks/0/path = NodePath("Sprite:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -27,7 +27,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:rotation")
+tracks/0/path = NodePath("Sprite:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -43,7 +43,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:rotation")
+tracks/0/path = NodePath("Sprite:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -59,7 +59,7 @@ length = 0.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:rotation")
+tracks/0/path = NodePath("Sprite:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -75,7 +75,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:rotation")
+tracks/0/path = NodePath("Sprite:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -91,7 +91,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:rotation")
+tracks/0/path = NodePath("Sprite:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -140,7 +140,7 @@ transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(0, -46.6176)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-z_index = 2
+z_index = 4
 collision_layer = 2
 script = ExtResource("1_kfe3d")
 
@@ -148,23 +148,24 @@ script = ExtResource("1_kfe3d")
 projectile = ExtResource("4_wa6cj")
 force = 100.0
 offset = Vector2(30, 0)
+z_index = null
+interval = null
 
-[node name="sprite" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 material = ExtResource("4_mpawu")
 rotation = 1.5708
 texture = ExtResource("1_t3162")
 offset = Vector2(0, -14)
 
-[node name="animations" type="AnimationPlayer" parent="."]
+[node name="Animation Player" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_pvtfm")
 }
 
-[node name="animation_tree" type="AnimationTree" parent="."]
+[node name="Animation Tree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_ph1f6")
-anim_player = NodePath("../animations")
+anim_player = NodePath("../Animation Player")
 parameters/Move/blend_position = -0.00215054
 
-[node name="collider" type="CollisionPolygon2D" parent="."]
-visible = false
+[node name="Collider" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-12, 0, -32, 26, 59, 0, -32, -26)

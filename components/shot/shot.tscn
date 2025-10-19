@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6xjkvh5y3c8j"]
+
+[ext_resource type="Script" uid="uid://cj446bk688tlo" path="res://components/shot/shot.gd" id="1_c0sha"]
+[ext_resource type="Material" uid="uid://b7hsxg70gkk5q" path="res://components/shader/halo.tres" id="2_8j37s"]
+[ext_resource type="Texture2D" uid="uid://d04aqg2nl8q8t" path="res://components/shot/sprite1.png" id="3_cux6o"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f2hnp"]
+radius = 5.0
+height = 106.0
+
+[node name="Shot" type="RigidBody2D"]
+collision_layer = 8
+gravity_scale = 0.0
+script = ExtResource("1_c0sha")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+material = ExtResource("2_8j37s")
+texture = ExtResource("3_cux6o")
+
+[node name="Dummy Collider" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_f2hnp")
+disabled = true
+
+[node name="KillZone" type="Area2D" parent="."]
+
+[node name="Region" type="CollisionShape2D" parent="KillZone"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_f2hnp")
+
+[connection signal="body_entered" from="KillZone" to="." method="_on_body_entered"]

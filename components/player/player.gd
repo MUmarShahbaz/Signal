@@ -1,6 +1,7 @@
 extends CharacterBody2D
+class_name Player
 
-@onready var anim_tree: AnimationTree = $animation_tree
+@onready var anim_tree: AnimationTree = $"Animation Tree"
 @export var anim_speed:= 8.0
 @export var move_speed:= 600
 

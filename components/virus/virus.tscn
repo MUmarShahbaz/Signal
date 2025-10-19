@@ -5,13 +5,14 @@
 [ext_resource type="Script" uid="uid://c8tdh4ykaj38q" path="res://components/virus/virus.gd" id="1_humf0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hgm0u"]
+radius = 35.0571
 
 [sub_resource type="Animation" id="Animation_humf0"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/path = NodePath("Sprite:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -28,7 +29,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/path = NodePath("Sprite:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -52,11 +53,10 @@ z_index = 1
 collision_layer = 4
 script = ExtResource("1_humf0")
 
-[node name="dum" type="CollisionShape2D" parent="."]
+[node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_hgm0u")
-disabled = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 material = ExtResource("1_hgm0u")
 texture = ExtResource("1_4atth")
 
@@ -66,11 +66,10 @@ libraries = {
 }
 autoplay = "default"
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 10
+[node name="KillZone" type="Area2D" parent="."]
+collision_mask = 2
 
-[node name="Collider" type="CollisionShape2D" parent="Area2D"]
+[node name="Region" type="CollisionShape2D" parent="KillZone"]
 shape = SubResource("CircleShape2D_humf0")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
+[connection signal="body_entered" from="KillZone" to="." method="_on_body_entered"]
