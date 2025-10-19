@@ -51,6 +51,7 @@ radius = 35.0571
 [node name="Virus" type="CharacterBody2D"]
 z_index = 1
 collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_humf0")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
@@ -72,4 +73,5 @@ collision_mask = 2
 [node name="Region" type="CollisionShape2D" parent="KillZone"]
 shape = SubResource("CircleShape2D_humf0")
 
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="body_entered" from="KillZone" to="." method="_on_body_entered"]

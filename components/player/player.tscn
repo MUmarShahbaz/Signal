@@ -142,6 +142,7 @@ graph_offset = Vector2(0, -46.6176)
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 4
 collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_kfe3d")
 
 [node name="Projectile Launcher" parent="." instance=ExtResource("3_ph1f6")]
