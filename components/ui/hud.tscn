@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://v62edcjcgouy"]
+[gd_scene load_steps=6 format=3 uid="uid://v62edcjcgouy"]
 
 [ext_resource type="Texture2D" uid="uid://h3bh05sre1u8" path="res://components/virus/sprite1.png" id="1_kjhcr"]
 [ext_resource type="Script" uid="uid://dv4b2muxg0k46" path="res://components/ui/hud.gd" id="1_w10xe"]
 [ext_resource type="Texture2D" uid="uid://df0sqgsioojy3" path="res://components/hacker/sprite.png" id="2_kjhcr"]
+[ext_resource type="FontFile" uid="uid://bt4lusn5ssk3r" path="res://components/font/static/Orbitron-Bold.ttf" id="2_v2uf8"]
+[ext_resource type="AudioStream" uid="uid://dc31c5kacw4pt" path="res://components/sfx/retro-explode-1-236678.mp3" id="5_4vcsp"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -23,6 +25,7 @@ offset_top = 10.0
 offset_right = -10.0
 offset_bottom = 33.0
 grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_v2uf8")
 theme_override_font_sizes/font_size = 24
 text = "00:00"
 
@@ -42,6 +45,7 @@ expand_mode = 3
 
 [node name="Count" type="Label" parent="Kill Count/Virus Counter"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_v2uf8")
 theme_override_font_sizes/font_size = 24
 text = "0"
 
@@ -56,5 +60,9 @@ expand_mode = 2
 
 [node name="Count" type="Label" parent="Kill Count/Hacker Counter"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_v2uf8")
 theme_override_font_sizes/font_size = 24
 text = "0"
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_4vcsp")

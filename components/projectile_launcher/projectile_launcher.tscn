@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dgamo7bet13wv"]
+[gd_scene load_steps=3 format=3 uid="uid://dgamo7bet13wv"]
 
 [ext_resource type="Script" uid="uid://b3bb7oervp0w" path="res://components/projectile_launcher/projectile_launcher.gd" id="1_0eb01"]
+[ext_resource type="AudioStream" uid="uid://crjlveig0m2q6" path="res://components/sfx/laser-shot-ingame-230500.mp3" id="2_vnobg"]
 
 [node name="Projectile Launcher" type="Node"]
 script = ExtResource("1_0eb01")
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_vnobg")

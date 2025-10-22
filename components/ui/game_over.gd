@@ -12,5 +12,6 @@ func game_over():
 	var viruses = HUD.get_node("Kill Count/Virus Counter/Count").text
 	var hackers = HUD.get_node("Kill Count/Hacker Counter/Count").text
 	HUD.queue_free()
+	$sfx.play()
 	$Label.text = "GAME OVER!\n\nYou killed %s Viruses and %s Hackers in %s\n\nPress Space to retry....." % [viruses, hackers, time]
 	waiting = true

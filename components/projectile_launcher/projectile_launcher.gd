@@ -1,6 +1,7 @@
 extends Node
 class_name ProjectileLauncher
 
+@onready var sfx: AudioStreamPlayer = $sfx
 @onready var character : CharacterBody2D = get_parent()
 @onready var player : CharacterBody2D = get_tree().get_first_node_in_group("player")
 @onready var is_player : bool = (character == player)
@@ -26,6 +27,7 @@ func _process(delta: float) -> void:
 			last_shot = 0
 
 func launch(target: Vector2):
+	sfx.play()
 	var new_projectile: Projectile = projectile.instantiate()
 	new_projectile.global_position = character.global_position + offset
 	new_projectile.rotate(atan2(target.y, target.x))

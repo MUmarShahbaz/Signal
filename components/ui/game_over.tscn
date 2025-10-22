@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://ucwt283gkb5"]
+[gd_scene load_steps=4 format=3 uid="uid://ucwt283gkb5"]
 
 [ext_resource type="Script" uid="uid://d36ojywd5didj" path="res://components/ui/game_over.gd" id="1_f8edm"]
+[ext_resource type="FontFile" uid="uid://cntohuwemm4mr" path="res://components/font/static/Orbitron-ExtraBold.ttf" id="2_lcwls"]
+[ext_resource type="AudioStream" uid="uid://yfte1g17lskn" path="res://components/sfx/game-over-deep-male-voice-clip-352695.mp3" id="3_45ii5"]
 
 [node name="Game Over" type="Control"]
 layout_mode = 3
@@ -19,6 +21,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_lcwls")
 theme_override_font_sizes/font_size = 40
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_45ii5")
